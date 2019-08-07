@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import classes from './MemeGenerator.module.css'
+
 class MemeGenerator extends Component {
   state = {
     topText: "",
@@ -16,15 +18,38 @@ class MemeGenerator extends Component {
     fetch('https://api.imgflip.com/get_memes')
       .then(response => response.json())
       .then(response => {
-        console.log(response);
-        this.setState({ allMemeImgs: response.data.memes })
+        const { memes } = response.data
+        this.setState({ allMemeImgs: memes })
       })
       .catch(console.error)
   }
 
+  handleInputChange = (event) => {
+    const { value, name } = event.target
+    this.setState({
+      [name]: value
+    });
+  }
+
   render() {
     return (
-      <div>This is MemeGenerator</div>
+      <div>
+        <form className={classes.MemeForm}>
+          <input
+            type="text"
+            name="topText"
+            value={this.state.topText}
+            onChange={this.handleInputChange} />
+
+          <input
+            type="text"
+            name="bottomText"
+            value={this.state.bottomText}
+            onChange={this.handleInputChange} />
+
+          <button>Gen</button>
+        </form>
+      </div>
     )
   }
 }
