@@ -1,14 +1,14 @@
-.meme {
+.Meme {
   position: relative;
   width: 90%;
   margin: auto;
 }
 
-.meme > img {
+.Meme > img {
   width: 100%;
 }
 
-.meme > h2 {
+.Meme > h2 {
   position: absolute;
   width: 80%;
   text-align: center;
@@ -26,11 +26,11 @@
     2px 2px 5px #000;
 }
 
-.meme > .bottom {
+.Meme > .Bottom {
   bottom: 0;
 }
 
-.meme > .top {
+.Meme > .Top {
   top: 0;
 }
 
